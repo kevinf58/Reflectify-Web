@@ -6,14 +6,12 @@ import { Footer } from "./components/common/Footer";
 function App() {
   return (
     <>
-      <section className="flex flex-col min-h-screen">
+      <section className="flex flex-col min-h-screen bg-lightgrey text-black">
         <header className="sticky top-0 z-10">
           <PrimaryNavBar />
           <SecondaryNavBar />
         </header>
-        <main className="grow">
-          {/* <Router /> */}
-        </main>
+        <main className="grow">{/* <Router /> */}</main>
         <Footer />
       </section>
     </>

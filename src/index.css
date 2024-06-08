@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;500;700&display=swap");
 
 @layer components {
   .link-hover-animation {
@@ -11,6 +11,21 @@
   .link-hover-animation-2 {
     @apply hover:backdrop-brightness-90 transition-all duration-200 p-1;
   }
+}
+
+html,
+body {
+  overscroll-behavior-y: contain;
+  margin: 0;
+  height: 100%;
+
+  /* subtract the height of the navbar (70px) */
+  --scrollbar-width: calc(100vw - 100%);
+}
+
+#app {
+  width: 100%;
+  height: 100%;
 }
 
 .disable-mouse-events {
@@ -108,6 +123,7 @@ audio,
 video {
   margin: 0;
   padding: 0;
+  border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
@@ -125,11 +141,7 @@ nav,
 section {
   display: block;
 }
-body.no-scroll {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-}
+
 ol,
 ul {
   list-style: none;
@@ -145,7 +157,37 @@ q:after {
   content: "";
   content: none;
 }
-
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+  cursor: pointer;
+}
+h1 {
+  font-size: 6em;
+  font-weight: bold;
+}
+h2 {
+  font-size: 5em;
+  font-weight: bold;
+}
+h3 {
+  font-size: 4em;
+  font-weight: bold;
+}
+h4 {
+  font-size: 3em;
+  font-weight: bold;
+}
+h5 {
+  font-size: 2em;
+  font-weight: bold;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
 img {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
@@ -168,4 +210,27 @@ input[type="reset"] {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+input,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: none;
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ecf4fb73;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(150, 126, 118);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(126, 106, 99);
 }

@@ -21,7 +21,6 @@ export const PrimaryNavBar = () => {
             bgColor="white"
             textColor="black"
             action={<a href="/upgrade">Upgrade</a>}
-            size="default"
           />
         </li>
         <li className="ml-auto text-lg">
