@@ -1,5 +1,5 @@
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     borderWidth: {
       default: "2px",
