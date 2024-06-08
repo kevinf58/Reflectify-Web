@@ -1,5 +1,5 @@
 function App() {
-  return <div>Hellow world!</div>;
+  return <div>This is my Reflectify App!</div>;
 }
 
 export default App;
