@@ -1,6 +1,6 @@
 import { PrimaryNavBar } from "./components/NavBar/PrimaryNavBar";
 import { SecondaryNavBar } from "./components/NavBar/SecondaryNavBar";
-import { Router } from "./Router";
+// import { Router } from "./Router";
 import { Footer } from "./components/common/Footer";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
           <SecondaryNavBar />
         </header>
         <main className="grow">
-          <Router />
+          {/* <Router /> */}
         </main>
         <Footer />
       </section>
