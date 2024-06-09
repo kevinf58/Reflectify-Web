@@ -3,6 +3,6 @@ export type LinkType = {
   bgColor: string;
   textColor: string;
   children: JSX.Element | string;
-  underline?: true;
+  underline?: string;
   vertical?: true;
 };

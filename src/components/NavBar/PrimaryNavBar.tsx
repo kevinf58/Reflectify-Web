@@ -26,8 +26,8 @@ export const PrimaryNavBar = () => {
         <li className="ml-auto text-lg">
           <Link
             onClick={() => console.log("iuhywbgsdefw")}
-            bgColor="white"
-            textColor="primary"
+            bgColor="before:bg-white"
+            textColor="hover:text-primary"
           >
             Login
           </Link>
