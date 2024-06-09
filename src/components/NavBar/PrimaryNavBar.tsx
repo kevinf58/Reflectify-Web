@@ -6,7 +6,7 @@ import { Button } from "../common/Button";
 
 export const PrimaryNavBar = () => {
   return (
-    <section className="w-screen bg-primary opacity-95 font-header font-bold py-3 px-7 text-white shadow-md">
+    <section className="w-screen bg-primary px-7 py-3 font-header font-bold text-white opacity-95 shadow-md">
       <ul className="flex items-center">
         <li>
           <img
@@ -15,7 +15,7 @@ export const PrimaryNavBar = () => {
             className="w-8"
           ></img>
         </li>
-        <li className="text-3xl ml-1 mr-7">CulinaryCrafts</li>
+        <li className="ml-1 mr-7 text-3xl">CulinaryCrafts</li>
         <li>
           <Button
             bgColor="white"
@@ -24,7 +24,14 @@ export const PrimaryNavBar = () => {
           />
         </li>
         <li className="ml-auto text-lg">
-          <Link text="Login" />|<Link text="Register" />
+          <Link
+            onClick={() => console.log("iuhywbgsdefw")}
+            bgColor="white"
+            textColor="primary"
+          >
+            Login
+          </Link>
+          {/* |<Link text="Register" /> */}
         </li>
       </ul>
     </section>
