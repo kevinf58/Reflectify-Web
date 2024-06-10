@@ -1,5 +1,7 @@
 export type ButtonProps = {
+  onClick: () => void;
   bgColor: string;
-  textColor: string;
-  action: JSX.Element;
+  hoverTextColor: string;
+  borderColor: string;
+  disabled?: true;
 };

@@ -6,7 +6,7 @@ export default {
       large: "10px",
     },
     colors: {
-      primary: "#E0707A",
+      primary: "#4FB477",
       secondary1: "#FEC006",
       secondary2: "#FF9A2A",
 
@@ -14,7 +14,7 @@ export default {
 
       white: "#F5F5F5",
       lightgrey: "#ECECEC",
-      grey: "#D9D9D9",
+      grey: "#DADADA",
       darkgrey: "#939393",
       black: "#484848",
       black2: "#000000",

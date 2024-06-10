@@ -3,9 +3,15 @@ import { ButtonProps } from "../../types/Button.type";
 export const Button = (props: ButtonProps) => {
   return (
     <button
-      className={`bg-white text-black text-xs py-1 px-3 rounded-sm hover:bg-opacity-40 hover:text-white transition-all duration-300`}
+      className={`border-default border-solid ${
+        props.disabled
+          ? `border-darkgrey bg-grey text-darkgrey`
+          : `${props.borderColor} ${props.bgColor} ${props.hoverTextColor} text-black hover:bg-opacity-20`
+      } px-2 py-0.5 text-xs transition-all duration-300`}
+      onClick={props.onClick}
+      disabled={props.disabled}
     >
-      {props.action}
+      Test Button
     </button>
   );
 };

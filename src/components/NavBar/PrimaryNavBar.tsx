@@ -18,20 +18,28 @@ export const PrimaryNavBar = () => {
         <li className="ml-1 mr-7 text-3xl">CulinaryCrafts</li>
         <li>
           <Button
-            bgColor="white"
-            textColor="black"
-            action={<a href="/upgrade">Upgrade</a>}
+            bgColor="bg-white"
+            hoverTextColor="hover:text-white"
+            borderColor="border-white"
+            onClick={() => console.log("Button")}
           />
         </li>
         <li className="ml-auto text-lg">
           <Link
-            onClick={() => console.log("iuhywbgsdefw")}
+            onClick={() => console.log("login")}
             bgColor="before:bg-white"
             textColor="hover:text-primary"
           >
             Login
           </Link>
-          {/* |<Link text="Register" /> */}
+          |
+          <Link
+            onClick={() => console.log("register")}
+            bgColor="before:bg-white"
+            textColor="hover:text-primary"
+          >
+            Register
+          </Link>
         </li>
       </ul>
     </section>
