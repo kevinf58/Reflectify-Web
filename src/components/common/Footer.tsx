@@ -1,14 +1,14 @@
 export const Footer = () => {
   return (
-    <footer className="bg-primary px-7 py-3 flex items-center font-header text-white font-medium z-10">
+    <footer className="z-10 flex items-center bg-primary py-3 pr-7 font-medium text-white">
       <img
         alt=""
-        src="/assets/icons/website-icons/website-footer-icon.png"
-        className="w-8"
-      ></img>
-      <h1 className="text-3xl ml-1">CulinaryCrafts</h1>
-      <h4 className="text-xs ml-auto text-end">
-        Copyright © 2023 Kevin Feng
+        src="/assets/icons/website-icon.png"
+        className="mx-7 w-9 md:mx-5 md:w-7"
+      />
+      <h1 className="font-title text-3xl md:text-2xl">Reflectify</h1>
+      <h4 className="ml-auto text-end text-xs md:text-[10px]">
+        Copyright © 2024 Kevin Feng
         <br />
         All Rights Reserved.
       </h4>

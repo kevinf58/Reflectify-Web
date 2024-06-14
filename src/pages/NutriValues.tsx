@@ -1,48 +1,9 @@
+import { Editor } from "../components/Editor";
+
 export const NutriValues = () => {
   return (
     <div>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
+      <Editor />
     </div>
   );
 };

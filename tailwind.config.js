@@ -5,6 +5,13 @@ export default {
       default: "2px",
       large: "10px",
     },
+    screens: {
+      "2xl": { max: "1536px" },
+      xl: { max: "1280px" },
+      lg: { max: "1024px" },
+      md: { max: "768px" },
+      sm: { max: "640px" },
+    },
     colors: {
       primary: "#4FB477",
       secondary1: "#FEC006",
@@ -24,8 +31,10 @@ export default {
       error: "#FB3A3A",
     },
     fontFamily: {
-      header: ["Roboto", "sans-serif"],
-      body: ["Arial", "sans-serif"],
+      title: ["JetBrains Mono", "Roboto", "serif"],
+      header: ["Roboto", "serif"],
+      body: ["Arial", "serif"],
+      editorParagraph: ["Inria Serif", "serif"],
     },
     extend: {
       width: {

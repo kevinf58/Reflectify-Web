@@ -1,48 +1,9 @@
+import { Editor } from "../components/Editor";
+
 export const Home = () => {
   return (
-    <>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-      <p>Test</p>
-    </>
+    <div className="h-40 w-3/4">
+      <Editor />
+    </div>
   );
 };
