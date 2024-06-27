@@ -1,13 +1,13 @@
 export const Footer = () => {
   return (
-    <footer className="z-10 flex items-center bg-primary py-3 pr-7 font-medium text-white">
+    <footer className="z-10 flex items-center bg-primary px-7 py-2 text-white md:px-5">
       <img
         alt=""
         src="/assets/icons/website-icon.png"
-        className="mx-7 w-9 md:mx-5 md:w-7"
+        className="mr-2 w-7 md:mr-1 md:w-6"
       />
-      <h1 className="font-title text-3xl md:text-2xl">Reflectify</h1>
-      <h4 className="ml-auto text-end text-xs md:text-[10px]">
+      <h1 className="text-xl tracking-wide md:text-lg font-semibold">Reflectify</h1>
+      <h4 className="ml-auto text-end text-xs md:text-[10px] font-semibold">
         Copyright © 2024 Kevin Feng
         <br />
         All Rights Reserved.

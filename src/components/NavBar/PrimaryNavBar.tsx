@@ -1,40 +1,47 @@
 import { Link } from "../common/Link";
 
-//TODO: conditionally render Upgrade or Upgraded
-//TODO: conditionally render login/register or user settings dropdown
-
 export const PrimaryNavBar = () => {
   return (
-    <section className="w-screen bg-primary py-3 pr-7 font-bold text-white opacity-95 shadow-lg md:py-2 md:pr-5">
-      <ul className="flex items-center">
+    <nav className="flex w-screen bg-white/30 px-12 py-5 font-bold text-white">
+      <h1 className="text-base">KEVIN FENG</h1>
+      <ul className="ml-auto flex items-center space-x-6">
         <li>
-          <img
-            alt=""
-            src="/assets/icons/website-icon.png"
-            className="mx-7 w-9 md:mx-5 md:w-8"
-          />
-        </li>
-        <li className="font-title text-3xl md:text-2xl">
-          Reflectify
-        </li>
-        <li className="ml-auto text-lg">
           <Link
-            onClick={() => console.log("login")}
+            onClick={() => console.log("BLOG")}
             bgColor="before:bg-white"
-            textColor="hover:text-primary"
+            textColor="hover:text-black"
           >
-            Login
+            BLOG
           </Link>
-          |
+        </li>
+        <li>
           <Link
-            onClick={() => console.log("register")}
+            onClick={() => console.log("PROJECTS")}
             bgColor="before:bg-white"
-            textColor="hover:text-primary"
+            textColor="hover:text-black"
           >
-            Register
+            PROJECTS
+          </Link>
+        </li>
+        <li>
+          <Link
+            onClick={() => console.log("ABOUT")}
+            bgColor="before:bg-white"
+            textColor="hover:text-black"
+          >
+            ABOUT
+          </Link>
+        </li>
+        <li>
+          <Link
+            onClick={() => console.log("CONTACT")}
+            bgColor="before:bg-white"
+            textColor="hover:text-black"
+          >
+            CONTACT
           </Link>
         </li>
       </ul>
-    </section>
+    </nav>
   );
 };
