@@ -13,7 +13,7 @@ export default {
       sm: { max: "640px" },
     },
     colors: {
-      primary: "#4FB477",
+      primary: "#69F5A1",
       secondary1: "#FEC006",
       secondary2: "#FF9A2A",
 
@@ -24,15 +24,13 @@ export default {
       grey: "#DADADA",
       darkgrey: "#939393",
       black: "#484848",
-      black2: "#000000",
 
       success: "#42E226",
       warning: "#FEC006",
       error: "#FB3A3A",
     },
     fontFamily: {
-      title: ["JetBrains Mono", "Roboto", "serif"],
-      header: ["Roboto", "serif"],
+      header: ["inter", "Roboto", "serif"],
       body: ["Arial", "serif"],
       editorParagraph: ["Inria Serif", "serif"],
     },
