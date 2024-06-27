@@ -23,7 +23,7 @@ export const Home = () => {
       <div className="fixed h-screen w-screen bg-black/50" />
       <div className="h-screen" />
       <section className="absolute inset-0 ml-10 flex w-1/3 flex-col justify-center font-bold tracking-wide text-white">
-        <div className="mb-3 text-xl tracking-wider text-primary">
+        <div className="mb-3 text-xl text-primary">
           HI, MY NAME IS
         </div>
         <div className="text-6xl">KEVIN FENG</div>
@@ -39,7 +39,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <div className="relative text-white">More content here...</div>
+      <div className="relative text-white h-screen">More content here...</div>
     </div>
   );
 };
