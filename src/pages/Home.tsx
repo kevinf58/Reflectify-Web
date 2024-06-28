@@ -26,7 +26,7 @@ export const Home = () => {
       <section className="absolute inset-0 flex items-center">
         <div className="ml-10 flex w-1/3 flex-col font-bold tracking-wide text-white">
           <div className="mb-3 flex items-end text-xl text-primary">
-            HI, MY NAME IS <BlinkingCursor />
+            {">"} HI, MY NAME IS <BlinkingCursor />
           </div>
           <div className="text-6xl">KEVIN FENG</div>
           <div className="my-8 font-semibold leading-snug">

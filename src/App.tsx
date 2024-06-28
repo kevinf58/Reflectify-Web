@@ -4,7 +4,7 @@ import { Router } from "./Router";
 
 function App() {
   return (
-    <section className="flex min-h-screen flex-col bg-lightgrey text-black">
+    <section className="flex min-h-screen flex-col bg-white text-black">
       <header className="fixed top-0 z-10">
         <PrimaryNavBar />
       </header>
