@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/common/Button";
 import { ProfileLinks } from "../components/Home/ProfileLinks";
+import { BlinkingCursor } from "../components/Home/BlinkingCursor";
 
 export const Home = () => {
   const [canPlay, setCanPlay] = useState(false);
@@ -24,7 +25,9 @@ export const Home = () => {
       <div className="fixed h-screen w-screen bg-black/55" />
       <section className="absolute inset-0 flex items-center">
         <div className="ml-10 flex w-1/3 flex-col font-bold tracking-wide text-white">
-          <div className="mb-3 text-xl text-primary">HI, MY NAME IS</div>
+          <div className="mb-3 flex items-end text-xl text-primary">
+            HI, MY NAME IS <BlinkingCursor />
+          </div>
           <div className="text-6xl">KEVIN FENG</div>
           <div className="my-8 font-semibold leading-snug">
             I'm a Software Developer deeply interested in Web Development
