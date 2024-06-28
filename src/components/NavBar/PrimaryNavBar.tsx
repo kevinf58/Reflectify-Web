@@ -2,7 +2,7 @@ import { Link } from "../common/Link";
 
 export const PrimaryNavBar = () => {
   return (
-    <nav className="flex w-screen bg-white/30 px-12 py-5 font-bold text-white">
+    <nav className="flex w-screen bg-white/25 px-12 py-5 font-bold text-white">
       <h1 className="text-base">KEVIN FENG</h1>
       <ul className="ml-auto flex items-center space-x-6">
         <li>

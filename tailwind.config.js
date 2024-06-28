@@ -1,9 +1,10 @@
+/** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     borderWidth: {
       default: "2px",
-      large: "10px",
     },
     screens: {
       "2xl": { max: "1536px" },
@@ -35,32 +36,15 @@ export default {
       editorParagraph: ["Inria Serif", "serif"],
     },
     extend: {
-      width: {
-        160: "40rem",
+      keyframes: {
+        blink: {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
       },
-      height: {
-        0.5: "0.125rem",
-        88: "22rem",
-        104: "26rem",
-        136: "34rem",
-      },
-      gridTemplateRows: {
-        9: "repeat(9, minmax(0, 1fr))",
-      },
-      gridRowStart: {
-        9: "9",
-      },
-      gridTemplateColumns: {
-        13: "repeat(13, minmax(0, 1fr))",
-      },
-      gridColumnStart: {
-        14: "14",
-      },
-      margin: {
-        0.5: "0.125rem",
-      },
-      boxShadow: {
-        "recipe-card": "2px 3px 2px rgba(0, 0, 0, 0.4)",
+      animation: {
+        blink: "blink 1s infinite steps(1, end)",
       },
     },
   },

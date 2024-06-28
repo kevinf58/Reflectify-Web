@@ -7,7 +7,7 @@ export const Button = (props: ButtonProps) => {
         props.disabled
           ? `border-darkgrey bg-grey text-darkgrey`
           : `border-primary bg-none text-white hover:bg-primary/50 hover:text-white`
-      } py-1.5 transition-all duration-500 text-base`}
+      } py-1.5 text-base transition-all duration-300`}
       onClick={props.onClick}
       disabled={props.disabled}
     >
