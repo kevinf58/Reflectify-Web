@@ -1,6 +1,6 @@
 import { Link } from "../common/Link";
 
-export const PrimaryNavBar = () => {
+export const NavBar = () => {
   return (
     <nav className="flex w-screen bg-white/25 px-12 py-5 font-bold text-white">
       <h1 className="text-base">KEVIN FENG</h1>

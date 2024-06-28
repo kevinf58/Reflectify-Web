@@ -1,4 +1,4 @@
-import { PrimaryNavBar } from "./components/NavBar/PrimaryNavBar";
+import { NavBar } from "./components/NavBar/NavBar";
 import { Router } from "./Router";
 // import { Footer } from "./components/common/Footer";
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <section className="flex min-h-screen flex-col bg-white text-black">
       <header className="fixed top-0 z-10">
-        <PrimaryNavBar />
+        <NavBar />
       </header>
       <main className="grow">
         <Router />

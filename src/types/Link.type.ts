@@ -4,5 +4,5 @@ export type LinkType = {
   textColor?: string;
   children: JSX.Element | string;
   underline?: string;
-  vertical?: true;
+  vertical?: boolean;
 };
