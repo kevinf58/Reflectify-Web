@@ -10,9 +10,9 @@ export const AnimationToggle = () => {
   return (
     <button className="fixed right-0 z-10 m-2" onClick={() => dispatch(toggle())}>
       {isToggled ? (
-        <FaCirclePause color="#F5F5F5" size={25} />
+        <FaCirclePause color="#484848" size={25} />
       ) : (
-        <FaCirclePlay color="#F5F5F5" size={25} />
+        <FaCirclePlay color="#484848" size={25} />
       )}
     </button>
   );
