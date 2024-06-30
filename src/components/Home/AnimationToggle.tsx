@@ -1,4 +1,3 @@
-import { FaCirclePause, FaCirclePlay } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../state/store";
 import { toggle } from "../../state/animations/animationSlice";
@@ -8,12 +7,14 @@ export const AnimationToggle = () => {
   const dispatch = useDispatch();
 
   return (
-    <button className="fixed right-0 z-10 m-2" onClick={() => dispatch(toggle())}>
-      {isToggled ? (
-        <FaCirclePause color="#484848" size={25} />
-      ) : (
-        <FaCirclePlay color="#484848" size={25} />
-      )}
+    <button
+      className="fixed bottom-0 right-0 z-10 m-2 text-sm"
+      onClick={() => dispatch(toggle())}
+    >
+      <span className="text-white font-extralight">Animations </span>
+      <span className={`${isToggled ? "text-success" : "text-error"} font-medium`}>
+        {isToggled ? "ON" : "OFF"}
+      </span>
     </button>
   );
 };
