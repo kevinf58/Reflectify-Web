@@ -15,7 +15,7 @@ export default {
     },
     colors: {
       primary: "#69F5A1",
-      secondary: "#888888",
+      secondary: "#FE5F55",
 
       button: "#CE5E68",
 

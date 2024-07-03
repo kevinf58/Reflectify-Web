@@ -11,7 +11,7 @@ export const NavBar = () => {
     <nav
       className={`flex w-screen ${
         darkModeToggled ? "bg-darkgrey/15" : "bg-white/15"
-      } duration-300 px-12 py-5 font-bold text-white`}
+      } transition-colors duration-300 px-12 py-5 font-bold text-white`}
     >
       <h1 className="text-base">KEVIN FENG</h1>
       <ul className="ml-auto flex items-center space-x-6">
