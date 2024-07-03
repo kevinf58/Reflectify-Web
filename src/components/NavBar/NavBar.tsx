@@ -1,6 +1,7 @@
 import { Link } from "../common/Link";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
+import { DarkModeButton } from "../common/DarkModeButton";
 
 export const NavBar = () => {
   const darkModeToggled = useSelector(
@@ -11,7 +12,7 @@ export const NavBar = () => {
     <nav
       className={`flex w-screen ${
         darkModeToggled ? "bg-darkgrey/15" : "bg-white/15"
-      } transition-colors duration-300 px-12 py-5 font-bold text-white`}
+      } px-12 py-5 font-bold text-white transition-colors duration-500 ease-in`}
     >
       <h1 className="text-base">KEVIN FENG</h1>
       <ul className="ml-auto flex items-center space-x-6">
@@ -50,6 +51,9 @@ export const NavBar = () => {
           >
             CONTACT
           </Link>
+        </li>
+        <li>
+          <DarkModeButton />
         </li>
       </ul>
     </nav>
