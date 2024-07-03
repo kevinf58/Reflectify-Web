@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import animationReducer from "./animations/animationSlice";
+import darkmodeReducer from "./darkmode/darkModeSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   animations: animationReducer,
+  darkmode: darkmodeReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
