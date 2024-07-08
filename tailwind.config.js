@@ -14,12 +14,12 @@ export default {
       sm: { max: "640px" },
     },
     colors: {
-      primary: "#69F5A1",
-      secondary: "#FE5F55",
+      primary: "#CCF5AC",
+      secondary: "#4350BA",
 
       button: "#CE5E68",
 
-      white: "#F5F5F5",
+      white: "#F0F0F0",
       lightgrey: "#ECECEC",
       grey: "#DADADA",
       darkgrey: "#939393",
