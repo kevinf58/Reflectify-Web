@@ -15,15 +15,13 @@ export default {
     },
     colors: {
       primary: "#CCF5AC",
-      secondary: "#4350BA",
+      secondary: "#3845AF",
 
       button: "#CE5E68",
 
       white: "#F0F0F0",
-      lightgrey: "#ECECEC",
-      grey: "#DADADA",
-      darkgrey: "#939393",
-      black: "#484848",
+      grey: "#484848",
+      black: "#343536",
 
       success: "#42E226",
       warning: "#FEC006",
@@ -44,6 +42,9 @@ export default {
       },
       animation: {
         blink: "blink 1s infinite steps(1, end)",
+      },
+      gridTemplateColumns: {
+        25: "repeat(25, minmax(0, 1fr))",
       },
     },
   },

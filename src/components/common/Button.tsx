@@ -7,7 +7,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <button
-      className={`border-default border-solid ${
+      className={`border-default border-solid transition-colors duration-300 ${
         props.disabled
           ? isDarkMode
             ? "border-secondary/60 text-white/60"
