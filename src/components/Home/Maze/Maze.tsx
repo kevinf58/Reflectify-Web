@@ -188,7 +188,9 @@ export const GenerateMaze = () => {
   return (
     <>
       <h6>Click on any tile to generate a maze!</h6>
-      <div className="grid-cols-35 m-1 grid border-default border-solid border-black shadow-xl">
+      <div
+        className={`grid-cols-35 m-1 grid border-default border-solid border-black shadow-xl`}
+      >
         {gridState.flat().map((cell, index) => (
           <div
             key={index}
@@ -201,14 +203,16 @@ export const GenerateMaze = () => {
               cell.walls.right && "border-r-[1px]"
             } ${cell.walls.bottom && "border-b-[1px]"} ${
               cell.walls.left && "border-l-[1px]"
-            } ${!cell.visited && !onClickDisabled && "duration-100 hover:scale-[1.75]"}`}
+            } ${!cell.visited && !onClickDisabled && "duration-100 hover:scale-[1.75]"} ${
+              isDarkMode ? "hover:bg-primary/90" : "hover:bg-secondary/60"
+            }`}
             onClick={() => !onClickDisabled && generate(cell)}
             title={`Cell (${cell.coords.x + 1}, ${cell.coords.y + 1})`}
           />
         ))}
       </div>
       <h6 className="">
-        Recursive Division!
+        This is done using Recursive Division!
         <Link
           onClick={() => {
             isGenerating.current = false;
@@ -216,7 +220,8 @@ export const GenerateMaze = () => {
             setGridState(initializeGrid());
           }}
           children={"Reset"}
-          bgColor="before:bg-black"
+          bgColor={isDarkMode ? "before:bg-white" : "before:bg-black"}
+          textColor={isDarkMode ? "hover:text-black" : "hover:text-white"}
           underline
         />
       </h6>
