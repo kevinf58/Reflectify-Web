@@ -3,7 +3,7 @@ import { RootState } from "../../state/store";
 import { toggle } from "../../state/animations/animationSlice";
 
 export const AnimationToggle = () => {
-  const animationToggled = useSelector((state: RootState) => state.animations.toggled);
+  const isAnimated = useSelector((state: RootState) => state.animations.toggled);
   const dispatch = useDispatch();
 
   return (
@@ -12,8 +12,8 @@ export const AnimationToggle = () => {
       onClick={() => dispatch(toggle())}
     >
       <span className="font-light">Animations </span>
-      <span className={`${animationToggled ? "text-success" : "text-error"} font-medium`}>
-        {animationToggled ? "ON" : "OFF"}
+      <span className={`${isAnimated ? "text-success" : "text-error"} font-medium`}>
+        {isAnimated ? "ON" : "OFF"}
       </span>
     </button>
   );

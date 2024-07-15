@@ -1,5 +1,8 @@
-import { Cell, Coords, CellPos } from "../../../types/Maze";
 import { useEffect, useState, useRef } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../state/store";
+
+import { Cell, Coords, CellPos } from "../../../types/Maze";
 import { Link } from "../../common/Link";
 
 const ROWS = 25;
@@ -12,6 +15,11 @@ const path: Cell[] = [];
 export const GenerateMaze = () => {
   const [gridState, setGridState] = useState<Cell[][]>([]);
   const [onClickDisabled, setOnclickDisabled] = useState(false);
+
+  const isDarkMode = useSelector((state: RootState) => state.darkmode.toggled);
+  const isAnimated = useSelector(
+    (state: RootState) => state.animations.toggled,
+  );
 
   const isGenerating = useRef(false);
 
@@ -98,7 +106,7 @@ export const GenerateMaze = () => {
           neighborArr.splice(randIndex, 1);
           continue;
         } else {
-          await pause();
+          isAnimated && (await pause());
 
           tilesGenerated++;
 
@@ -149,35 +157,23 @@ export const GenerateMaze = () => {
       validMove({
         coords: { x: currCell.coords.x, y: currCell.coords.y - 1 },
         gridState: initialGrid,
-      })
-        ? neighborArr.push(
-            initialGrid[currCell.coords.y - 1][currCell.coords.x],
-          )
-        : "";
+      }) &&
+        neighborArr.push(initialGrid[currCell.coords.y - 1][currCell.coords.x]);
       validMove({
         coords: { x: currCell.coords.x + 1, y: currCell.coords.y },
         gridState: initialGrid,
-      })
-        ? neighborArr.push(
-            initialGrid[currCell.coords.y][currCell.coords.x + 1],
-          )
-        : "";
+      }) &&
+        neighborArr.push(initialGrid[currCell.coords.y][currCell.coords.x + 1]);
       validMove({
         coords: { x: currCell.coords.x, y: currCell.coords.y + 1 },
         gridState: initialGrid,
-      })
-        ? neighborArr.push(
-            initialGrid[currCell.coords.y + 1][currCell.coords.x],
-          )
-        : "";
+      }) &&
+        neighborArr.push(initialGrid[currCell.coords.y + 1][currCell.coords.x]);
       validMove({
         coords: { x: currCell.coords.x - 1, y: currCell.coords.y },
         gridState: initialGrid,
-      })
-        ? neighborArr.push(
-            initialGrid[currCell.coords.y][currCell.coords.x - 1],
-          )
-        : "";
+      }) &&
+        neighborArr.push(initialGrid[currCell.coords.y][currCell.coords.x - 1]);
 
       currCell.neighbors = neighborArr;
     });
@@ -199,11 +195,11 @@ export const GenerateMaze = () => {
             className={`hover: h-2 w-2 border-solid border-black border-opacity-30 ${
               cell.visited ? "bg-white" : "bg-white/95"
             } ${onClickDisabled ? "cursor-default" : "cursor-pointer"} ${
-              cell.visited ? "" : "border-[1px]"
-            } ${cell.walls.top ? "border-t-[1px]" : ""} ${
-              cell.walls.right ? "border-r-[1px]" : ""
-            } ${cell.walls.bottom ? "border-b-[1px]" : ""} ${
-              cell.walls.left ? "border-l-[1px]" : ""
+              !cell.visited && "border-[1px]"
+            } ${cell.walls.top && "border-t-[1px]"} ${
+              cell.walls.right && "border-r-[1px]"
+            } ${cell.walls.bottom && "border-b-[1px]"} ${
+              cell.walls.left && "border-l-[1px]"
             }`}
             onClick={() => (onClickDisabled ? null : generate(cell))}
           />
