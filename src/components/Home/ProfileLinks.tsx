@@ -14,6 +14,7 @@ export const ProfileLinks = () => {
         className="hover:cursor-pointer"
         href="https://github.com/kevinf58"
         target="_blank"
+        title="GitHub"
       >
         <img src="/assets/icons/github.png" className="w-6" />
       </a>
@@ -21,11 +22,19 @@ export const ProfileLinks = () => {
         className="hover:cursor-pointer"
         href="https://www.linkedin.com/in/kfengg/"
         target="_blank"
+        title="LinkedIn"
       >
         <img src="/assets/icons/linkedin.png" className="w-6" />
       </a>
+      <a
+        className="hover:cursor-pointer"
+        href="mailto:kfeng58@uwo.ca"
+        title="Email"
+      >
+        <img src="/assets/icons/email.png" className="w-6" />
+      </a>
       <div className="h-0.5 w-5 bg-black" />
-      <a className="hover:cursor-pointer">
+      <a className="hover:cursor-pointer" title="Resume">
         <img src="/assets/icons/resume.png" className="w-6" />
       </a>
     </aside>

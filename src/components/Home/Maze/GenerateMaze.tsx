@@ -1,10 +1,11 @@
 import { Cell, Coords, CellPos } from "../../../types/Maze";
 import { useEffect, useState, useRef } from "react";
+import { Link } from "../../common/Link";
 
 const ROWS = 25;
 const COLUMNS = 25;
 //in ms
-const DELAY = 0;
+const DELAY = 1;
 
 const path: Cell[] = [];
 
@@ -13,6 +14,8 @@ export const GenerateMaze = () => {
   const [onClickDisabled, setOnclickDisabled] = useState(false);
 
   const isGenerating = useRef(false);
+
+  let tilesGenerated = 0;
 
   const pause = () => {
     return new Promise((resolve) => setTimeout(resolve, DELAY));
@@ -80,9 +83,11 @@ export const GenerateMaze = () => {
       setGridState(initializeGrid());
       return;
     }
-    //if the current cell has no neighbors, backtrack until a cell with neighbors is found
+    // if the current cell has no neighbors, backtrack until a cell with neighbors is found
     else if (props.neighbors.length === 0) {
-      nextCell = path.pop() as Cell;
+      // prevent an error being thrown if all cells are visited and maze generation is complete
+      if (tilesGenerated === ROWS * COLUMNS - 1) return;
+      else nextCell = path.pop() as Cell;
     } else {
       const neighborArr = props.neighbors;
 
@@ -94,6 +99,8 @@ export const GenerateMaze = () => {
           continue;
         } else {
           await pause();
+
+          tilesGenerated++;
 
           prevCell = nextCell;
 
@@ -184,7 +191,7 @@ export const GenerateMaze = () => {
 
   return (
     <section>
-      <div className="grid grid-cols-25 border-default border-solid border-black">
+      <div className="m-1 grid grid-cols-25 border-default border-solid border-black shadow-xl">
         {gridState.flat().map((cell, index) => (
           <div
             key={index}
@@ -204,15 +211,16 @@ export const GenerateMaze = () => {
       </div>
       <h6 className="text-center text-xs font-light">
         Recursive Division!
-        <button
-          className="ml-2 underline"
+        <Link
           onClick={() => {
             isGenerating.current = false;
             setOnclickDisabled(false);
+            setGridState(initializeGrid());
           }}
-        >
-          Reset
-        </button>
+          children={"Reset"}
+          bgColor="before:bg-black"
+          underline
+        />
       </h6>
     </section>
   );
