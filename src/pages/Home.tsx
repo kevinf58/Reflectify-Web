@@ -4,7 +4,7 @@ import { BlinkingCursor } from "../components/Home/BlinkingCursor";
 import { AnimationToggle } from "../components/Home/AnimationToggle";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
-import { GenerateMaze } from "../components/Home/Maze/GenerateMaze";
+import { GenerateMaze } from "../components/Home/Maze/Maze";
 
 export const Home = () => {
   const isAnimated = useSelector(
@@ -52,9 +52,9 @@ export const Home = () => {
         </div>
         <ProfileLinks />
         <div
-          className={`fixed right-0 h-screen w-5/12 transition-colors duration-300 ease-in ${
+          className={`fixed right-0 flex h-screen w-5/12 flex-col transition-colors duration-300 ease-in ${
             isDarkMode ? "bg-secondary" : "bg-primary"
-          } flex items-center justify-center`}
+          } flex items-center justify-center text-center text-xs font-light`}
         >
           <GenerateMaze />
         </div>

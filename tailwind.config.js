@@ -44,7 +44,7 @@ export default {
         blink: "blink 1s infinite steps(1, end)",
       },
       gridTemplateColumns: {
-        25: "repeat(25, minmax(0, 1fr))",
+        35: "repeat(35, minmax(0, 1fr))",
       },
     },
   },

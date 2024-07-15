@@ -5,8 +5,8 @@ import { RootState } from "../../../state/store";
 import { Cell, Coords, CellPos } from "../../../types/Maze";
 import { Link } from "../../common/Link";
 
-const ROWS = 25;
-const COLUMNS = 25;
+const ROWS = 35;
+const COLUMNS = 22;
 //in ms
 const DELAY = 1;
 
@@ -128,9 +128,9 @@ export const GenerateMaze = () => {
     const initialGrid: Cell[][] = [];
 
     // initializing the grid with cells
-    for (let i = 0; i < ROWS; i++) {
+    for (let i = 0; i < COLUMNS; i++) {
       const currRow: Cell[] = [];
-      for (let j = 0; j < COLUMNS; j++) {
+      for (let j = 0; j < ROWS; j++) {
         const currCell: Cell = {
           coords: {
             x: j,
@@ -186,13 +186,14 @@ export const GenerateMaze = () => {
   }, []);
 
   return (
-    <section>
-      <div className="m-1 grid grid-cols-25 border-default border-solid border-black shadow-xl">
+    <>
+      <h6>Click on any tile to generate a maze!</h6>
+      <div className="grid-cols-35 m-1 grid border-default border-solid border-black shadow-xl">
         {gridState.flat().map((cell, index) => (
           <div
             key={index}
             id="grid"
-            className={`hover: h-2 w-2 border-solid border-black border-opacity-30 ${
+            className={`hover: h-2 w-2 border-solid border-black border-opacity-20 ${
               cell.visited ? "bg-white" : "bg-white/95"
             } ${onClickDisabled ? "cursor-default" : "cursor-pointer"} ${
               !cell.visited && "border-[1px]"
@@ -200,12 +201,13 @@ export const GenerateMaze = () => {
               cell.walls.right && "border-r-[1px]"
             } ${cell.walls.bottom && "border-b-[1px]"} ${
               cell.walls.left && "border-l-[1px]"
-            }`}
-            onClick={() => (onClickDisabled ? null : generate(cell))}
+            } ${!cell.visited && !onClickDisabled && "duration-100 hover:scale-[1.75]"}`}
+            onClick={() => !onClickDisabled && generate(cell)}
+            title={`Cell (${cell.coords.x + 1}, ${cell.coords.y + 1})`}
           />
         ))}
       </div>
-      <h6 className="text-center text-xs font-light">
+      <h6 className="">
         Recursive Division!
         <Link
           onClick={() => {
@@ -218,6 +220,6 @@ export const GenerateMaze = () => {
           underline
         />
       </h6>
-    </section>
+    </>
   );
 };
