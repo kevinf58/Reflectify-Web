@@ -19,3 +19,7 @@ export type CellPos = {
   coords: Coords;
   gridState: Cell[][];
 };
+
+export type MazeAlgoProps = {
+  description: string;
+};

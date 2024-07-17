@@ -1,4 +1,4 @@
-import { DarkModeToggle } from "../common/DarkModeToggle";
+import { DarkModeToggle } from "./DarkModeToggle";
 import { Link } from "../common/Link";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";

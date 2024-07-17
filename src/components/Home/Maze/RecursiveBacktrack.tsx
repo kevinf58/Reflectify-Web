@@ -1,18 +1,15 @@
-import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../state/store";
 
-import { Cell, Coords, CellPos } from "../../../types/Maze";
+import { Cell, Coords, MazeAlgoProps } from "../../../types/Maze";
+import { ROWS, COLUMNS } from "../../../constants";
+import { pause } from "../../../helpers/maze/pause";
+import { RootState } from "../../../state/store";
+import { updateWalls } from "../../../helpers/maze/updateWalls";
+import { initializeGrid } from "../../../helpers/maze/initializeGrid";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "../../common/Link";
 
-const ROWS = 35;
-const COLUMNS = 22;
-//in ms
-const DELAY = 1;
-
-const path: Cell[] = [];
-
-export const GenerateMaze = () => {
+export const RecursiveBacktrack = (props: MazeAlgoProps) => {
   const [gridState, setGridState] = useState<Cell[][]>([]);
   const [onClickDisabled, setOnclickDisabled] = useState(false);
 
@@ -23,25 +20,8 @@ export const GenerateMaze = () => {
 
   const isGenerating = useRef(false);
 
+  const path: Cell[] = [];
   let tilesGenerated = 0;
-
-  const pause = () => {
-    return new Promise((resolve) => setTimeout(resolve, DELAY));
-  };
-
-  const validMove = (props: CellPos) => {
-    if (
-      0 <= props.coords.x &&
-      props.coords.x < ROWS &&
-      0 <= props.coords.y &&
-      props.coords.y < COLUMNS &&
-      props.gridState[props.coords.y][props.coords.x].visited === false
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   const updateGrid = (props: Coords) => {
     const newGrid = [...gridState];
@@ -49,25 +29,7 @@ export const GenerateMaze = () => {
     setGridState(newGrid);
   };
 
-  const updateWalls = (props: { prevCell: Cell; nextCell: Cell }) => {
-    const prevCell = props.prevCell;
-    const nextCell = props.nextCell;
-
-    if (prevCell.coords.y > nextCell.coords.y) {
-      prevCell.walls.top = false;
-      nextCell.walls.bottom = false;
-    } else if (prevCell.coords.x < nextCell.coords.x) {
-      prevCell.walls.right = false;
-      nextCell.walls.left = false;
-    } else if (prevCell.coords.y < nextCell.coords.y) {
-      prevCell.walls.bottom = false;
-      nextCell.walls.top = false;
-    } else if (prevCell.coords.x > nextCell.coords.x) {
-      prevCell.walls.left = false;
-      nextCell.walls.right = false;
-    }
-  };
-
+  //TODO: CHANGE THIS FUNC LATER TO USE KRUSKALS/PRIM'S AS WELL
   const generate = async (props: Cell) => {
     const start = props;
 
@@ -92,12 +54,12 @@ export const GenerateMaze = () => {
       return;
     }
     // if the current cell has no neighbors, backtrack until a cell with neighbors is found
-    else if (props.neighbors.length === 0) {
+    else if (nextCell.neighbors.length === 0) {
       // prevent an error being thrown if all cells are visited and maze generation is complete
       if (tilesGenerated === ROWS * COLUMNS - 1) return;
       else nextCell = path.pop() as Cell;
     } else {
-      const neighborArr = props.neighbors;
+      const neighborArr = nextCell.neighbors;
 
       for (let i = 0; i < neighborArr.length; i++) {
         const randIndex = Math.floor(Math.random() * neighborArr.length);
@@ -124,72 +86,13 @@ export const GenerateMaze = () => {
     recursiveBacktrack(nextCell);
   };
 
-  const initializeGrid = () => {
-    const initialGrid: Cell[][] = [];
-
-    // initializing the grid with cells
-    for (let i = 0; i < COLUMNS; i++) {
-      const currRow: Cell[] = [];
-      for (let j = 0; j < ROWS; j++) {
-        const currCell: Cell = {
-          coords: {
-            x: j,
-            y: i,
-          },
-          visited: false,
-          walls: {
-            top: true,
-            right: true,
-            bottom: true,
-            left: true,
-          },
-          neighbors: [],
-        };
-        currRow.push(currCell);
-      }
-      initialGrid.push(currRow);
-    }
-
-    // initializing the neighbors for all cells in the grid
-    initialGrid.flat().map((currCell) => {
-      const neighborArr: Cell[] = [];
-
-      validMove({
-        coords: { x: currCell.coords.x, y: currCell.coords.y - 1 },
-        gridState: initialGrid,
-      }) &&
-        neighborArr.push(initialGrid[currCell.coords.y - 1][currCell.coords.x]);
-      validMove({
-        coords: { x: currCell.coords.x + 1, y: currCell.coords.y },
-        gridState: initialGrid,
-      }) &&
-        neighborArr.push(initialGrid[currCell.coords.y][currCell.coords.x + 1]);
-      validMove({
-        coords: { x: currCell.coords.x, y: currCell.coords.y + 1 },
-        gridState: initialGrid,
-      }) &&
-        neighborArr.push(initialGrid[currCell.coords.y + 1][currCell.coords.x]);
-      validMove({
-        coords: { x: currCell.coords.x - 1, y: currCell.coords.y },
-        gridState: initialGrid,
-      }) &&
-        neighborArr.push(initialGrid[currCell.coords.y][currCell.coords.x - 1]);
-
-      currCell.neighbors = neighborArr;
-    });
-
-    return initialGrid;
-  };
-
   useEffect(() => {
     setGridState(initializeGrid());
   }, []);
-
   return (
     <>
-      <h6>Click on any tile to generate a maze!</h6>
       <div
-        className={`grid-cols-35 m-1 grid border-default border-solid border-black shadow-xl`}
+        className={`m-1 grid grid-cols-35 border-default border-solid border-black shadow-xl`}
       >
         {gridState.flat().map((cell, index) => (
           <div
@@ -212,7 +115,7 @@ export const GenerateMaze = () => {
         ))}
       </div>
       <h6 className="">
-        This is done using Recursive Division!
+        {props.description}
         <Link
           onClick={() => {
             isGenerating.current = false;

@@ -10,6 +10,7 @@ export const AnimationToggle = () => {
     <button
       className="fixed bottom-0 right-0 z-10 m-2 text-sm"
       onClick={() => dispatch(toggle())}
+      title="Click me to toggle animations!"
     >
       <span className="font-light">Animations </span>
       <span className={`${isAnimated ? "text-success" : "text-error"} font-medium`}>

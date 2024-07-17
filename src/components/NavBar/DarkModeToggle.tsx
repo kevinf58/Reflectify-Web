@@ -8,7 +8,10 @@ export const DarkModeToggle = () => {
   const dispatch = useDispatch();
 
   return (
-    <button onClick={() => dispatch(toggle())}>
+    <button
+      onClick={() => dispatch(toggle())}
+      title="Click me to toggle between light & dark mode!"
+    >
       {isDarkMode ? (
         <MdOutlineLightMode size={24} />
       ) : (
