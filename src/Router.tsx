@@ -1,22 +1,22 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/Home";
-import { Recipes } from "./pages/Recipes";
-import { NutriValues } from "./pages/NutriValues";
-import { Upgrade } from "./pages/Upgrade";
+import { Projects } from "./pages/Projects";
+import { Blog } from "./pages/Blog";
+import { About } from "./pages/About";
+import { Contact } from "./pages/Contact";
 import { PageNotFound } from "./pages/PageNotFound";
 
 export const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Recipes />} />
-        <Route path="/nutritional-values" element={<NutriValues />} />
-        <Route path="/upgrade" element={<Upgrade />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
   );
 };
