@@ -1,4 +1,4 @@
-import { Cell } from "../../types/Maze";
+import { Cell } from "../../types/Maze.type";
 
 export const updateWalls = (props: { prevCell: Cell; nextCell: Cell }) => {
   const prevCell = props.prevCell;
