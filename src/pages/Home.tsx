@@ -1,63 +1,50 @@
-import { Button } from "../components/common/Button";
-import { ProfileLinks } from "../components/Home/ProfileLinks";
 import { BlinkingCursor } from "../components/Home/BlinkingCursor";
-import { AnimationToggle } from "../components/Home/AnimationToggle";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
-import { MazeCarousel } from "../components/Home/Maze/MazeCarousel";
+import { Link } from "../components/common/Link";
+import { ProfileLinks } from "../components/Home/ProfileLinks";
 
 export const Home = () => {
-  const isAnimated = useSelector(
-    (state: RootState) => state.animations.toggled,
-  );
   const isDarkMode = useSelector((state: RootState) => state.darkmode.toggled);
 
   return (
     <>
-      <AnimationToggle />
       <section className="absolute inset-0 flex items-center">
-        <div className="ml-12 flex w-1/3 flex-col font-bold tracking-wide">
+        <div className="ml-12 flex w-3/5 lg:w-4/5 flex-col font-bold tracking-wide">
           <div
-            className={`mb-3 flex items-end text-xl ${
+            className={`mb-3 flex items-end text-lg ${
               isDarkMode ? "text-primary" : "text-secondary"
             }`}
           >
-            {">"} HI, MY NAME IS {isAnimated && <BlinkingCursor />}
+            HI, MY NAME IS KEVIN {<BlinkingCursor />}
           </div>
-          <div className="text-6xl">KEVIN FENG</div>
-          <div className="my-8 font-semibold leading-snug">
-            I'm a Software Developer deeply interested in Web Development
-            technologies. Currently, I most enjoy using{" "}
-            {
-              <span
-                className={`${isDarkMode ? "text-primary" : "text-secondary"}`}
-              >
-                TypeScript
-              </span>
-            }{" "}
-            and{" "}
-            {
-              <span
-                className={`${isDarkMode ? "text-primary" : "text-secondary"}`}
-              >
-                React
-              </span>
-            }
-            !
+          <div className="text-6xl">I Like Building Websites</div>
+          <div className="my-8 font-medium leading-snug">
+            I’m a Computer Science student currently studying at the University
+            of Western Ontario. Feel free to check out my{" "}
+            <Link
+              underline
+              bgColor={`${isDarkMode ? "before:bg-white" : "before:bg-black"}`}
+              textColor={`${isDarkMode ? "hover:text-black" : "hover:text-white"}`}
+              onClick={() => console.log()}
+            >
+              Blog
+            </Link>
+            and
+            <Link
+              underline
+              bgColor={`${isDarkMode ? "before:bg-white" : "before:bg-black"}`}
+              textColor={`${isDarkMode ? "hover:text-black" : "hover:text-white"}`}
+              onClick={() => console.log()}
+            >
+              Portfolio!
+            </Link>
           </div>
-          <div className="space-x-6">
-            <Button onClick={() => console.log("PROJECTS")}>PROJECTS</Button>
-            <Button onClick={() => console.log("BLOG")}>BLOG</Button>
-          </div>
+          <div
+            className={`h-1 w-96 ${isDarkMode ? "bg-primary" : "bg-secondary"}`}
+          />
         </div>
         <ProfileLinks />
-        <div
-          className={`fixed right-0 flex h-screen w-5/12 flex-col transition-colors duration-300 ease-in ${
-            isDarkMode ? "bg-secondary" : "bg-primary"
-          } flex items-center justify-center text-center text-xs font-light`}
-        >
-          <MazeCarousel />
-        </div>
       </section>
     </>
   );

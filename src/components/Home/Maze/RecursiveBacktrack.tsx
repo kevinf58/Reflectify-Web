@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 
-import { Cell, Coords, MazeAlgoProps } from "../../../types/Maze";
-import { ROWS, COLUMNS } from "../../../constants";
+import { Cell, Coords, MazeAlgoProps } from "../../../types/Maze.type";
 import { pause } from "../../../helpers/maze/pause";
 import { RootState } from "../../../state/store";
 import { updateWalls } from "../../../helpers/maze/updateWalls";
 import { initializeGrid } from "../../../helpers/maze/initializeGrid";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "../../common/Link";
+import { useBreakpoint } from "../../../hooks/useBreakpoint";
 
 export const RecursiveBacktrack = (props: MazeAlgoProps) => {
   const [gridState, setGridState] = useState<Cell[][]>([]);
@@ -19,9 +19,23 @@ export const RecursiveBacktrack = (props: MazeAlgoProps) => {
   );
 
   const isGenerating = useRef(false);
+  const currBreakpoint = useBreakpoint();
 
   const path: Cell[] = [];
   let tilesGenerated = 0;
+
+  const COLUMNS =
+    currBreakpoint.current === "2xl"
+      ? 40
+      : currBreakpoint.current === "xl"
+        ? 35
+        : 25;
+  const ROWS =
+    currBreakpoint.current === "2xl"
+      ? 25
+      : currBreakpoint.current === "xl"
+        ? 22
+        : 25;
 
   const updateGrid = (props: Coords) => {
     const newGrid = [...gridState];
@@ -50,13 +64,13 @@ export const RecursiveBacktrack = (props: MazeAlgoProps) => {
     nextCell = props;
 
     if (!isGenerating.current) {
-      setGridState(initializeGrid());
+      setGridState(initializeGrid({ y: ROWS, x: COLUMNS }));
       return;
     }
     // if the current cell has no neighbors, backtrack until a cell with neighbors is found
     else if (nextCell.neighbors.length === 0) {
       // prevent an error being thrown if all cells are visited and maze generation is complete
-      if (tilesGenerated === ROWS * COLUMNS - 1) return;
+      if (tilesGenerated === COLUMNS * ROWS - 1) return;
       else nextCell = path.pop() as Cell;
     } else {
       const neighborArr = nextCell.neighbors;
@@ -87,40 +101,39 @@ export const RecursiveBacktrack = (props: MazeAlgoProps) => {
   };
 
   useEffect(() => {
-    setGridState(initializeGrid());
-  }, []);
+    setGridState(initializeGrid({ y: ROWS, x: COLUMNS }));
+  }, [ROWS, COLUMNS]);
+
   return (
     <>
       <div
-        className={`m-1 grid grid-cols-35 border-default border-solid border-black shadow-xl`}
+        className={`m-1 mx-auto grid w-fit grid-cols-40 box-border border-default border-solid border-black xl:grid-cols-35 lg:grid-cols-25`}
       >
         {gridState.flat().map((cell, index) => (
           <div
             key={index}
             id="grid"
-            className={`hover: h-2 w-2 border-solid border-black border-opacity-20 ${
-              cell.visited ? "bg-white" : "bg-white/95"
-            } ${onClickDisabled ? "cursor-default" : "cursor-pointer"} ${
-              !cell.visited && "border-[1px]"
+            className={`h-2 w-2 border-solid border-black border-opacity-20 bg-white ${
+              onClickDisabled ? "cursor-default" : "cursor-pointer"
             } ${cell.walls.top && "border-t-[1px]"} ${
               cell.walls.right && "border-r-[1px]"
             } ${cell.walls.bottom && "border-b-[1px]"} ${
               cell.walls.left && "border-l-[1px]"
-            } ${!cell.visited && !onClickDisabled && "duration-100 hover:scale-[1.75]"} ${
-              isDarkMode ? "hover:bg-primary/90" : "hover:bg-secondary/60"
+            } ${!cell.visited && !onClickDisabled && "duration-100 hover:scale-[1.6]"} ${
+              isDarkMode ? "hover:bg-primary/85" : "hover:bg-secondary/75"
             }`}
             onClick={() => !onClickDisabled && generate(cell)}
             title={`Cell (${cell.coords.x + 1}, ${cell.coords.y + 1})`}
           />
         ))}
       </div>
-      <h6 className="">
+      <h6>
         {props.description}
         <Link
           onClick={() => {
             isGenerating.current = false;
             setOnclickDisabled(false);
-            setGridState(initializeGrid());
+            setGridState(initializeGrid({ y: ROWS, x: COLUMNS }));
           }}
           children={"Reset"}
           bgColor={isDarkMode ? "before:bg-white" : "before:bg-black"}

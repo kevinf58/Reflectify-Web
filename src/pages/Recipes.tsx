@@ -1,6 +1,6 @@
 export const Recipes = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       <p>Test</p>
       <p>Test</p>
       <p>Test</p>

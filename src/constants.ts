@@ -1,5 +1,3 @@
-// maze constants
-export const ROWS = 35;
-export const COLUMNS = 22;
+// // maze constants
 //in ms
 export const DELAY = 1;

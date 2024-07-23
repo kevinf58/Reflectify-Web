@@ -1,12 +1,11 @@
-import { Cell, CellPos } from "../../types/Maze";
-import { ROWS, COLUMNS } from "../../constants";
+import { Cell, CellPos, Coords } from "../../types/Maze.type";
 
 const isValidMove = (props: CellPos) => {
   if (
     0 <= props.coords.x &&
-    props.coords.x < ROWS &&
+    props.coords.x < props.gridState[0].length &&
     0 <= props.coords.y &&
-    props.coords.y < COLUMNS &&
+    props.coords.y < props.gridState.length &&
     props.gridState[props.coords.y][props.coords.x].visited === false
   ) {
     return true;
@@ -15,13 +14,13 @@ const isValidMove = (props: CellPos) => {
   }
 };
 
-export const initializeGrid = () => {
+export const initializeGrid = (props: Coords) => {
   const initialGrid: Cell[][] = [];
 
   // initializing the grid with cells
-  for (let i = 0; i < COLUMNS; i++) {
+  for (let i = 0; i < props.y; i++) {
     const currRow: Cell[] = [];
-    for (let j = 0; j < ROWS; j++) {
+    for (let j = 0; j < props.x; j++) {
       const currCell: Cell = {
         coords: {
           x: j,

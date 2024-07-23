@@ -15,7 +15,7 @@ export default {
     },
     colors: {
       primary: "#CCF5AC",
-      secondary: "#3845AF",
+      secondary: "#4154FF",
 
       button: "#CE5E68",
 
@@ -44,7 +44,13 @@ export default {
         blink: "blink 1s infinite steps(1, end)",
       },
       gridTemplateColumns: {
+        20: "repeat(20, minmax(0, 1fr))",
+        25: "repeat(25, minmax(0, 1fr))",
+        28: "repeat(28, minmax(0, 1fr))",
+        30: "repeat(30, minmax(0, 1fr))",
+        34: "repeat(34, minmax(0, 1fr))",
         35: "repeat(35, minmax(0, 1fr))",
+        40: "repeat(40, minmax(0, 1fr))",
       },
     },
   },
