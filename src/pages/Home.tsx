@@ -40,7 +40,7 @@ export const Home = () => {
       />
       <AnimationToggle />
       <section
-        className={`pointer-events-none absolute inset-0 flex items-center duration-300 ${
+        className={`pointer-events-none absolute inset-0 flex items-center transition-colors duration-300 ease-in ${
           darkModeToggled ? "bg-black/50" : "bg-black/40"
         }`}
       >
