@@ -14,16 +14,14 @@ export default {
       sm: { max: "640px" },
     },
     colors: {
-      primary: "#69F5A1",
-      secondary: "#FE5F55",
+      primary: "#CCF5AC",
+      secondary: "#4154FF",
 
       button: "#CE5E68",
 
-      white: "#F5F5F5",
-      lightgrey: "#ECECEC",
-      grey: "#DADADA",
-      darkgrey: "#939393",
-      black: "#484848",
+      white: "#F0F0F0",
+      grey: "#484848",
+      black: "#343536",
 
       success: "#42E226",
       warning: "#FEC006",
@@ -44,6 +42,15 @@ export default {
       },
       animation: {
         blink: "blink 1s infinite steps(1, end)",
+      },
+      gridTemplateColumns: {
+        20: "repeat(20, minmax(0, 1fr))",
+        25: "repeat(25, minmax(0, 1fr))",
+        28: "repeat(28, minmax(0, 1fr))",
+        30: "repeat(30, minmax(0, 1fr))",
+        34: "repeat(34, minmax(0, 1fr))",
+        35: "repeat(35, minmax(0, 1fr))",
+        40: "repeat(40, minmax(0, 1fr))",
       },
     },
   },
