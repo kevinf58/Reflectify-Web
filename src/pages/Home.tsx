@@ -3,9 +3,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import { Link } from "../components/common/Link";
 import { ProfileLinks } from "../components/Home/ProfileLinks";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const isDarkMode = useSelector((state: RootState) => state.darkmode.toggled);
+
+  const nav = useNavigate();
 
   return (
     <>
@@ -26,7 +29,7 @@ export const Home = () => {
               underline
               bgColor={`${isDarkMode ? "before:bg-white" : "before:bg-black"}`}
               textColor={`${isDarkMode ? "hover:text-black" : "hover:text-white"}`}
-              onClick={() => console.log()}
+              onClick={() => nav("/blog")}
             >
               Blog
             </Link>
@@ -35,7 +38,7 @@ export const Home = () => {
               underline
               bgColor={`${isDarkMode ? "before:bg-white" : "before:bg-black"}`}
               textColor={`${isDarkMode ? "hover:text-black" : "hover:text-white"}`}
-              onClick={() => console.log()}
+              onClick={() => nav("/projects")}
             >
               Portfolio!
             </Link>
